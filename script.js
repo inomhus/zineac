@@ -81,7 +81,7 @@ const FileManager = {
 const TreeView = {
     async initialize() {
         try {
-            const response = await fetch('/structure.json');
+            const response = await fetch('/zineac/structure.json');
             const structure = await response.json();
             this.buildTree(structure, UI.elements.fileTree);
         } catch (error) {
