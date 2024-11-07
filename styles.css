@@ -32,15 +32,11 @@
 /* ==========================================================================
    Base Styles
    ========================================================================== */
-@font-face {
-    font-family: 'OCR-A';
-    src: url('https://cdn.jsdelivr.net/npm/ocr-a@1.0.1/OCR-A.woff2') format('woff2'),
-         url('https://cdn.jsdelivr.net/npm/ocr-a@1.0.1/OCR-A.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 body {
     margin: 0;
-    font-family: 'OCR-A', monospace;
+    font-family: 'Space Mono', monospace;
     background: var(--light-bg);
     color: var(--light-text);
 }
