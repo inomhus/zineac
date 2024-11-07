@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="file-list">
+            <div class="header">
+                <h2><span class="home-link">zine.ac</span></h2>
+                <div class="header-buttons">
+                    <button id="themeToggle" aria-label="Toggle theme">
+                        <i class="ph-fill ph-sun"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="fileSearch" placeholder="Search files..." aria-label="Search files">
+            </div>
+            <div id="fileList"></div>
+        </div>
+        <div class="content">
+            <div class="viewer">
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

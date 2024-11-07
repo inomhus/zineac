@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+    /* Solarized Light */
+    --sol-base03: #002b36;
+    --sol-base02: #073642;
+    --sol-base01: #586e75;
+    --sol-base00: #657b83;
+    --sol-base0:  #839496;
+    --sol-base1:  #93a1a1;
+    --sol-base2:  #eee8d5;
+    --sol-base3:  #fdf6e3;
+    --sol-blue:   #268bd2;
+
+    /* Theme Colors */
+    --light-bg: var(--sol-base3);
+    --light-bg-alt: var(--sol-base2);
+    --light-text: var(--sol-base00);
+    --light-muted: var(--sol-base1);
+    --light-accent: var(--sol-blue);
+    --light-hover: var(--sol-base3);
+
+    --dark-bg: #1a1b26;
+    --dark-bg-alt: #24283b;
+    --dark-text: #c0caf5;
+    --dark-muted: #565f89;
+    --dark-accent: #7aa2f7;
+    --dark-hover: #2f334d;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+@font-face {
+    font-family: 'OCR-A';
+    src: url('https://cdn.jsdelivr.net/npm/ocr-a@1.0.1/OCR-A.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/npm/ocr-a@1.0.1/OCR-A.woff') format('woff');
+}
+
+body {
+    margin: 0;
+    font-family: 'OCR-A', monospace;
+    background: var(--light-bg);
+    color: var(--light-text);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   File List
+   ========================================================================== */
+.file-list {
+    width: 250px;
+    background: var(--light-bg-alt);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 6px 8px;
+    flex-shrink: 0;
+}
+
+.header h2 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--light-text);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+/* Search */
+.search-container {
+    margin: 0 0 20px 0;
+    flex-shrink: 0;
+    width: 90%;
+}
+
+#fileSearch {
+    width: 100%;
+    padding: 6px 8px;
+    border: none;
+    background: none;
+    color: var(--light-text);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    opacity: 1;
+}
+
+#fileSearch::placeholder {
+    color: var(--light-muted);
+    opacity: 0.7;
+}
+
+/* File Tree */
+#fileList {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-muted) transparent;
+    margin-right: -20px;
+    padding-right: 20px;
+}
+
+#fileList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#fileList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#fileList::-webkit-scrollbar-thumb {
+    background-color: var(--light-muted);
+    border-radius: 3px;
+}
+
+.tree-item {
+    margin: 5px 0;
+}
+
+.tree-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.tree-header:hover {
+    background: var(--light-hover);
+}
+
+.toggle {
+    font-family: monospace;
+    margin-right: 5px;
+    width: 15px;
+    color: var(--light-accent);
+}
+
+.label {
+    font-weight: 400;
+}
+
+.root-directory { font-weight: 800; }
+.main-directory { font-weight: 600; }
+
+.tree-children {
+    margin-left: 20px;
+    transition: all 0.2s;
+}
+
+.collapsed {
+    display: none;
+}
+
+.file-item {
+    padding: 5px 5px 5px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.file-item:hover,
+.file-item.selected {
+    background: var(--light-hover);
+}
+
+/* ==========================================================================
+   Content Area
+   ========================================================================== */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.viewer {
+    background: var(--light-bg);
+    border-radius: 8px;
+    overflow-y: auto;
+    height: calc(100vh - 40px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.viewer::-webkit-scrollbar {
+    display: none;
+}
+
+#content {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.2;
+}
+
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    padding: 60px 20px;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Reading Progress */
+.reading-progress {
+    position: sticky;
+    top: 20px;
+    right: 20px;
+    float: right;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0.8;
+    color: var(--light-text);
+    z-index: 100;
+}
+
+/* ==========================================================================
+   Dark Mode
+   ========================================================================== */
+[data-theme="dark"] {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] .file-list {
+    background: var(--dark-bg-alt);
+}
+
+[data-theme="dark"] .viewer {
+    background: var(--dark-bg);
+}
+
+[data-theme="dark"] #fileSearch,
+[data-theme="dark"] #themeToggle {
+    color: var(--dark-text);
+}
+
+[data-theme="dark"] #fileSearch::placeholder {
+    color: var(--dark-muted);
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .file-item:hover,
+[data-theme="dark"] .file-item.selected,
+[data-theme="dark"] .tree-header:hover {
+    background: var(--dark-hover);
+}
+
+[data-theme="dark"] .toggle {
+    color: var(--dark-accent);
+}
+
+[data-theme="dark"] #fileList::-webkit-scrollbar-thumb {
+    background-color: var(--dark-muted);
+}
+
+[data-theme="dark"] #fileList {
+    scrollbar-color: var(--dark-muted) transparent;
+}
+
+[data-theme="dark"] .reading-progress {
+    color: var(--dark-text);
+}
